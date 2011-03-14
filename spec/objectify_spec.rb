@@ -7,7 +7,8 @@ describe "an objectified hash" do
   subject { {:key => "value", :another_key => "another value"}.objectify }
 
   its(:key) { should == "value" }
-  its(:another_key) { should == "another value" }
+  it { subject.another_key.should == "another value" }
+  it { subject.send(:key).should == "value" }
 end
 
 describe "an objectified hash with nested hashes" do
